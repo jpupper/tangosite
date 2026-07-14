@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pasos de Cambio — Propuesta Técnica y Artística</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #e8e0d8;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    .bg-texture {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(120, 40, 40, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(40, 40, 80, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.3;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 900px; }
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid rgba(200, 160, 120, 0.3);
+      color: #c8a078;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span { color: #c8a078; }
+    .hero p {
+      font-size: 1.15rem;
+      color: #a09890;
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: #706860;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 0.4rem; }
+    .hero-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: #c8a078; display: inline-block; }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #c8a078;
+      margin-bottom: 0.75rem;
+    }
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+    .section h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #d0c8b8;
+      margin: 2rem 0 0.75rem;
+    }
+    .section p, .section li { color: #a09890; font-size: 0.95rem; }
+
+    /* ===== CUADROS ===== */
+    .cuadros-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .cuadro-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.3s;
+    }
+    .cuadro-card:hover { border-color: rgba(200,160,120,0.3); }
+    .cuadro-card .num {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: #706860;
+      margin-bottom: 0.4rem;
+    }
+    .cuadro-card h4 {
+      font-size: 1rem;
+      color: #d0c8b8;
+      margin-bottom: 0.3rem;
+    }
+    .cuadro-card .protag {
+      font-size: 0.8rem;
+      color: #c8a078;
+      margin-bottom: 0.5rem;
+    }
+    .cuadro-card p {
+      font-size: 0.85rem;
+      color: #807870;
+      line-height: 1.5;
+    }
+
+    /* ===== TECNOLOGÍA ===== */
+    .tech-block {
+      background: rgba(255,255,255,0.015);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-top: 2rem;
+    }
+    .tech-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-top: 0;
+      color: #d0c8b8;
+    }
+    .tech-block p, .tech-block li { color: #a09890; }
+    .tech-references {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .tech-references a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      background: rgba(200,160,120,0.08);
+      border: 1px solid rgba(200,160,120,0.15);
+      border-radius: 8px;
+      color: #c8a078;
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: background 0.3s;
+    }
+    .tech-references a:hover { background: rgba(200,160,120,0.15); }
+    .tech-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .tech-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .tech-list li::before {
+      content: '▸';
+      color: #c8a078;
+      flex-shrink: 0;
+    }
+    .tech-list strong { color: #d0c8b8; font-weight: 500; }
+
+    .guipper-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      background: rgba(200,160,120,0.1);
+      border: 1px solid rgba(200,160,120,0.2);
+      border-radius: 10px;
+      color: #c8a078;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    .guipper-link:hover {
+      background: rgba(200,160,120,0.18);
+      border-color: rgba(200,160,120,0.35);
+    }
+
+    /* ===== REQUERIMIENTOS ===== */
+    .req-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .req-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .req-item .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .req-item h4 { font-size: 0.95rem; color: #d0c8b8; margin-bottom: 0.4rem; }
+    .req-item p { font-size: 0.85rem; color: #807870; line-height: 1.5; }
+
+    /* ===== SEPARADOR ===== */
+    .separator {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .separator .line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,160,120,0.2), transparent); }
+    .separator .diamond { width: 8px; height: 8px; transform: rotate(45deg); border: 1px solid rgba(200,160,120,0.3); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 4rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    footer p {
+      font-size: 0.8rem;
+      color: #504840;
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 3rem 1.25rem; }
+      .tech-block { padding: 1.5rem; }
+      .cuadros-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="bg-texture"></div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Obra escénica &bull; Tango contemporáneo</div>
+    <h1>Pasos de <span>Cambio</span></h1>
+    <p>Una experiencia inmersiva de tango contemporáneo donde la danza, la música en vivo y las visuales generativas en tiempo real convergen para explorar la reconexión humana en la ciudad moderna.</p>
+    <div class="hero-meta">
+      <span><span class="dot"></span> Danza + Música en vivo + Visuales</span>
+      <span><span class="dot"></span> Primer Acto</span>
+      <span><span class="dot"></span> 4 Escenas dramáticas</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== SINOPSIS ===== -->
+<section class="section">
+  <div class="section-label">Sobre la obra</div>
+  <h2>Del aislamiento al encuentro</h2>
+  <p>
+    <em>Pasos de Cambio</em> es una obra escénica de tango contemporáneo que integra danza,
+    música en vivo (bandoneón y voz) y proyecciones audiovisuales para reflexionar sobre
+    la vida urbana actual y la necesidad humana de reconectar con los otros.
+  </p>
+  <p style="margin-top:1rem;">
+    La obra propone un recorrido desde la alienación y el aislamiento propios de las
+    grandes ciudades hacia la recuperación del vínculo, la sensibilidad y la identidad
+    compartida. El lenguaje escénico combina el tango danza, la música en vivo y recursos
+    audiovisuales que funcionan como extensión del mundo interior de los personajes y de
+    la ciudad que habitan.
+  </p>
+</section>
+
+<div class="section" style="padding-top:0;">
+  <div class="section-label">Documentación</div>
+  <h2>Descargables del proyecto</h2>
+  <div class="tech-references" style="margin-top:1.5rem;">
+    <a href="Presentación Dossier Pasos de Cambio.pdf" target="_blank" rel="noopener" download>▸ DOSSIER PASOS DE CAMBIO</a>
+    <a href="Antecedentes Pasos de Cambio.pdf" target="_blank" rel="noopener" download>▸ ANTECEDENTES PASOS DE CAMBIO</a>
+    <a href="Portfolio Leonardo Barri.pdf" target="_blank" rel="noopener" download>▸ PORTFOLIO LEONARDO BARRI - TITULAR PASOS DE CAMBIO</a>
+  </div>
+</div>
+
+<div class="separator"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+
+<!-- ===== ESTRUCTURA ===== -->
+<section class="section">
+  <div class="section-label">PRIMER ACTO</div>
+  <h2>Estructura dramática</h2>
+  <div class="cuadros-grid">
+    <div class="cuadro-card">
+      <div class="num">ESCENA 1</div>
+      <h4>Contratiempo</h4>
+      <div class="protag">Música: Libertango (Astor Piazzolla)</div>
+      <p>La ciudad como maquinaria frenética. Los personajes son absorbidos por el ritmo urbano entre imágenes de tránsito, multitudes y sobreestimulación constante. Tensión entre individuo y masa.</p>
+    </div>
+    <div class="cuadro-card">
+      <div class="num">ESCENA 2</div>
+      <h4>Desvinculados</h4>
+      <div class="protag">Música: Ciudad de Nadie (José Ogivieki / Letra: Alejandro Szwarcman)</div>
+      <p>En una ciudad emocionalmente indiferente, el otro deja de ser persona para convertirse en objeto. A través de la manipulación física y el movimiento mecánico surge la posibilidad del primer vínculo genuino.</p>
+    </div>
+    <div class="cuadro-card">
+      <div class="num">ESCENA 3</div>
+      <h4>Algoritmo</h4>
+      <div class="protag">Música: Sin Piel (Eladia Blázquez)</div>
+      <p>Realidad dominada por la tecnología, la repetición y la desconexión emocional. La hiperconectividad deriva en soledad profunda y pérdida de sensibilidad.</p>
+    </div>
+    <div class="cuadro-card">
+      <div class="num">ESCENA 4</div>
+      <h4>Reencuentro</h4>
+      <div class="protag">Música: Barro tal vez (Luis Alberto Spinetta)</div>
+      <p>Surge el deseo de volver a sentir. El tango deja de ser técnica para convertirse en experiencia de encuentro, vulnerabilidad y confianza. El despertar emocional y la construcción del vínculo.</p>
+    </div>
+  </div>
+  <p style="margin-top:2rem; font-style:italic; color:#807870;">
+    El recorrido concluye con una imagen de esperanza: el cambio es posible cuando
+    recuperamos la capacidad de mirar al otro, escucharlo y compartir una experiencia común.
+  </p>
+</section>
+
+<div class="separator"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+
+<!-- ===== TECNOLOGÍA ===== -->
+<section class="section">
+  <div class="section-label">Especificación técnica</div>
+  <h2>Tecnología aplicada a la escena</h2>
+
+  <div class="tech-block">
+    <h3>Software de visuales en vivo</h3>
+    <p>
+      El show se realizará con un programa especializado en visuales en vivo con un enfoque en
+      programación para shows en vivo, mediante procesamiento de shaders de alto rendimiento
+      que permiten generar gráficos en tiempo real sincronizados con la performance.
+    </p>
+
+    <div class="tech-references">
+      <a href="https://www.youtube.com/watch?v=SEaSqZ95bl8" target="_blank" rel="noopener">▸ Referencia 1</a>
+      <a href="https://www.youtube.com/watch?v=QfiB4QP9qqo" target="_blank" rel="noopener">▸ Referencia 2</a>
+      <a href="https://www.youtube.com/watch?v=WNvPJRaXSIk" target="_blank" rel="noopener">▸ Referencia 3</a>
+    </div>
+
+    <h3>Software</h3>
+    <p>
+      El software a utilizar es un software de producción nacional llamado
+      <strong>Guipper</strong>, software especializado en la producción multimedia que utiliza
+      procesamiento de shaders de alto rendimiento, ideales para espectáculos donde se requiera
+      interacción.
+    </p>
+    <a class="guipper-link" href="https://fullscreencode.com/guipper/" target="_blank" rel="noopener">
+      ▸ fullscreencode.com/guipper/
+    </a>
+  </div>
+</section>
+
+<!-- ===== REQUERIMIENTOS TÉCNICOS ===== -->
+<section class="section">
+  <div class="section-label">Necesidades técnicas</div>
+  <h2>Equipamiento multimedia</h2>
+  <div class="req-grid">
+    <div class="req-item">
+      <div class="icon">▣</div>
+      <h4>Proyector o pantalla LED</h4>
+      <p>Superficie de proyección de alta calidad para visualizar los contenidos generativos. Se recomienda una pantalla LED de al menos 4m de ancho o un proyector con mínimo 10.000 lúmenes para asegurar visibilidad en escena.</p>
+    </div>
+    <div class="req-item">
+      <div class="icon">⊙</div>
+      <h4>Sensor de captura</h4>
+      <p>Cámara RGB o Kinect para capturar el movimiento de los bailarines en tiempo real. Es ideal realizar una calibración cuidadosa del espacio escénico para maximizar la precisión del seguimiento.</p>
+    </div>
+  </div>
+
+  <div class="tech-block" style="margin-top:2rem;">
+    <h3>Interacción en tiempo real</h3>
+    <p>
+      El software permite hacer efectos que grafiquen el movimiento de los bailarines de
+      tango en tiempo real, permitiendo a las personas "observar" en vivo el movimiento de los
+      bailarines. A su vez, las visuales estarán en consonancia con la estética de la obra,
+      creando una experiencia sinestésica donde el movimiento físico se traduce en luz, color
+      y forma sobre el espacio escénico.
+    </p>
+    <ul class="tech-list" style="margin-top:1rem;">
+      <li><strong>Captura de movimiento:</strong> Seguimiento de siluetas y trayectorias de los bailarines mediante cámara RGB o sensor de profundidad.</li>
+      <li><strong>Visuales generativas:</strong> Shaders en tiempo real que reaccionan a la posición, velocidad y proximidad de los cuerpos en escena.</li>
+      <li><strong>Sincronización dramatúrgica:</strong> Cada cuadro de la obra tiene su propia paleta visual y lógica de interacción, alineada con el eje dramático.</li>
+      <li><strong>Estética integrada:</strong> Las visuales funcionan como extensión del mundo interior de los personajes y del paisaje urbano que habitan.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="separator"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+
+<!-- ===== OBJETIVO ===== -->
+<section class="section">
+  <div class="section-label">Enfoque artístico</div>
+  <h2>Dramaturgia física y visual</h2>
+  <p>
+    Buscamos desarrollar una dramaturgia física y visual donde danza, música y audiovisual
+    construyan una narrativa poética sin necesidad de un relato lineal, permitiendo que el
+    espectador se reconozca en las contradicciones de la vida urbana contemporánea y en la
+    posibilidad de transformación que nace del encuentro con los demás.
+  </p>
+  <div style="margin-top:2rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center;">
+    <span style="padding:0.5rem 1.2rem; border:1px solid rgba(255,255,255,0.06); border-radius:20px; font-size:0.8rem; color:#706860;">Danza</span>
+    <span style="padding:0.5rem 1.2rem; border:1px solid rgba(255,255,255,0.06); border-radius:20px; font-size:0.8rem; color:#706860;">Música en vivo</span>
+    <span style="padding:0.5rem 1.2rem; border:1px solid rgba(255,255,255,0.06); border-radius:20px; font-size:0.8rem; color:#706860;">Visuales generativas</span>
+    <span style="padding:0.5rem 1.2rem; border:1px solid rgba(255,255,255,0.06); border-radius:20px; font-size:0.8rem; color:#706860;">Tango contemporáneo</span>
+    <span style="padding:0.5rem 1.2rem; border:1px solid rgba(255,255,255,0.06); border-radius:20px; font-size:0.8rem; color:#706860;">Guipper + Shaders</span>
+  </div>
+</section>
+
+<footer>
+  <p>Pasos de Cambio &mdash; Propuesta técnica y artística &bull; 2025</p>
+</footer>
+</body>
+</html>
