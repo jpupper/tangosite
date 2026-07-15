@@ -265,10 +265,66 @@
       color: #504840;
     }
 
+    /* ===== STAFF ===== */
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .staff-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 1.8rem;
+      transition: border-color 0.3s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .staff-card:hover { border-color: rgba(200,160,120,0.3); }
+    .staff-card .staff-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: #d0c8b8;
+      font-weight: 600;
+    }
+    .staff-card .staff-role {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #c8a078;
+      margin-bottom: 0.2rem;
+    }
+    .staff-card p {
+      font-size: 0.85rem;
+      color: #807870;
+      line-height: 1.6;
+    }
+    .staff-card .staff-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+    .staff-card .staff-links a {
+      font-size: 0.75rem;
+      color: #c8a078;
+      text-decoration: none;
+      border: 1px solid rgba(200,160,120,0.15);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .staff-card .staff-links a:hover { background: rgba(200,160,120,0.12); }
+    .staff-card.staff-wide { grid-column: 1 / -1; }
+
     @media (max-width: 640px) {
       .section { padding: 3rem 1.25rem; }
       .tech-block { padding: 1.5rem; }
       .cuadros-grid { grid-template-columns: 1fr; }
+      .staff-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -311,7 +367,7 @@
   <div class="section-label">Documentación</div>
   <h2>Descargables del proyecto</h2>
   <div class="tech-references" style="margin-top:1.5rem;">
-    <a href="Presentación Dossier Pasos de Cambio.pdf" target="_blank" rel="noopener" download>▸ DOSSIER PASOS DE CAMBIO</a>
+    <a href="dossier.pdf" target="_blank" rel="noopener" download>▸ DOSSIER PASOS DE CAMBIO</a>
     <a href="Antecedentes Pasos de Cambio.pdf" target="_blank" rel="noopener" download>▸ ANTECEDENTES PASOS DE CAMBIO</a>
     <a href="Portfolio Leonardo Barri.pdf" target="_blank" rel="noopener" download>▸ PORTFOLIO LEONARDO BARRI - TITULAR PASOS DE CAMBIO</a>
   </div>
@@ -353,6 +409,115 @@
     El recorrido concluye con una imagen de esperanza: el cambio es posible cuando
     recuperamos la capacidad de mirar al otro, escucharlo y compartir una experiencia común.
   </p>
+</section>
+
+<!-- ===== STAFF ===== -->
+<section class="section">
+  <div class="section-label">Equipo artístico</div>
+  <h2>Biografías del STAFF</h2>
+  <div class="staff-grid">
+
+    <div class="staff-card">
+      <div class="staff-role">Dirección General, Dirección Coreográfica e Intérprete en Danza</div>
+      <div class="staff-name">Leonardo Barri</div>
+      <p>Leonardo Barri es bailarín, coreógrafo y docente de tango argentino. Nació en Córdoba Capital en 1982 y reside en Buenos Aires desde 2009. Cuenta con más de 23 años de trayectoria nacional e internacional como intérprete, creador y formador.</p>
+      <p>Se formó en tango argentino, ritmos latinos y danza contemporánea. Fue finalista del Campeonato Mundial de Tango y ha integrado compañías y espectáculos de reconocida trayectoria, presentándose en escenarios de Argentina, Asia, Europa y América.</p>
+      <p>Actualmente se desempeña como bailarín en Esquina Homero Manzi y como docente de tango en el campus argentino de Pepperdine University (Malibu, Estados Unidos). Es creador y director de los proyectos URBANTANGO y TANGOTECH, iniciativas de investigación y creación apoyadas por los programas Mecenazgo, Prodanza, Fondo Metropolitano de las Artes y Puentes Culturales del Ministerio de Cultura de la Ciudad de Buenos Aires. Actualmente dirige Pasos de Cambio, una propuesta escénica interdisciplinaria que integra danza, música en vivo, audiovisual y tecnologías contemporáneas.</p>
+      <div class="staff-links">
+        <a href="https://www.leotangoshow.com" target="_blank" rel="noopener">leotangoshow.com</a>
+        <a href="https://instagram.com/leo_barri" target="_blank" rel="noopener">@leo_barri</a>
+      </div>
+    </div>
+
+    <div class="staff-card">
+      <div class="staff-role">Dramaturgia y Dirección Escénica</div>
+      <div class="staff-name">Ignacio González Cano</div>
+      <p>Ignacio González Cano es director escénico, coreógrafo, dramaturgo, docente e investigador especializado en lenguajes interdisciplinarios aplicados a las artes escénicas. Es Licenciado en Folklore, Profesor Nacional Superior de Folklore y Danzas Nativas, y docente de la Universidad Nacional de las Artes (UNA), donde actualmente se desempeña como Director Coreográfico de la Compañía de Tango de la institución.</p>
+      <p>Desde 2008 desarrolla proyectos que articulan tango, teatro y danza contemporánea, destacándose la creación de Tempotango, propuesta orientada a la exploración de nuevos formatos escénicos para el tango. Paralelamente, ha desarrollado una destacada trayectoria en el ámbito de la ópera como coreógrafo y director de escena en producciones presentadas en instituciones como el Teatro Colón, el Palacio de Bellas Artes y el Teatro Municipal de Santiago.</p>
+      <p>Entre sus reconocimientos se encuentran el Premio Trinidad Guevara y el Premio Tango, además de nominaciones a los premios Hugo, ACE y Teatro del Mundo. Actualmente integra el equipo creativo de la Orquesta Delio Valdez.</p>
+      <div class="staff-links">
+        <a href="https://instagram.com/nacho_gonzalez_cano" target="_blank" rel="noopener">@nacho_gonzalez_cano</a>
+      </div>
+    </div>
+
+    <div class="staff-card">
+      <div class="staff-role">Asistencia Coreográfica e Intérprete en Danza</div>
+      <div class="staff-name">Anabella Chinellato</div>
+      <p>Anabella Chinellato es bailarina, docente y coreógrafa de tango argentino. Inició su formación en danza clásica y egresó como bailarina profesional del Instituto Superior de Arte del Teatro Colón, integrando tanto el ballet del Instituto como el Ballet Estable del Teatro Colón.</p>
+      <p>Desarrolló parte de su trayectoria en compañías como Ballet Joven, Ballet de Cámara y Ballet y Lírica Positano, participando en presentaciones y giras nacionales con repertorio de ballet y danza contemporánea. Desde 2010 se especializa en tango argentino. Estudió en la Universidad Nacional de las Artes (UNA), donde integró la Compañía de Tango y participó en diversas presentaciones en teatros de Buenos Aires y del interior del país.</p>
+      <p>Como intérprete, docente y coreógrafa ha trabajado en compañías y espacios de referencia como Tempotango, Aeternum Tango, Tango Lovers Company, Tango Porteño, Café Tortoni, Madero Tango, Palacio Tango y La Ventana. Ha realizado giras y actividades de formación en Argentina, Brasil, Estados Unidos, Italia y China.</p>
+      <div class="staff-links">
+        <a href="https://instagram.com/anitasofia.ch" target="_blank" rel="noopener">@anitasofia.ch</a>
+      </div>
+    </div>
+
+    <div class="staff-card">
+      <div class="staff-role">Dirección Musical, Composición, Arreglos e Intérprete en Bandoneón</div>
+      <div class="staff-name">Gabriel Merlino</div>
+      <p>Gabriel Merlino es músico, compositor, arreglador, docente y bandoneonista de amplia trayectoria internacional. Es primer bandoneón y director musical del espectáculo Tango Pasión, con el que ha realizado giras por más de 40 países y presentado conciertos en salas como el Teatro Colón, la Philharmonie de Colonia, el Alte Oper de Frankfurt y el Théâtre Bobino de París, entre otras.</p>
+      <p>Como solista y creador ha desarrollado proyectos discográficos y escénicos vinculados al tango contemporáneo y la música original, destacándose trabajos como Bandoneon Dreams, Cuántico y colaboraciones con artistas de renombre internacional.</p>
+      <p>En Argentina ha sido director musical y primer bandoneón en importantes escenarios y espectáculos de tango, además de desarrollar una intensa actividad como compositor, docente e investigador del instrumento. Actualmente integra el dúo Tagini-Merlino junto a Vanina Tagini, con quien ha editado los discos Íntimos, Íntimos II y El Siglo del Viento, y se suma al proyecto Pasos de Cambio como director musical, compositor, arreglador e intérprete en bandoneón.</p>
+      <div class="staff-links">
+        <a href="https://instagram.com/gabomerlino" target="_blank" rel="noopener">@gabomerlino</a>
+      </div>
+    </div>
+
+    <div class="staff-card">
+      <div class="staff-role">Intérprete Vocal</div>
+      <div class="staff-name">Vanina Tagini</div>
+      <p>Vanina Tagini es cantante de tango argentina con una extensa trayectoria nacional e internacional. Inició su carrera en el Café Tortoni y desarrolló su actividad como intérprete en importantes casas de tango y compañías de Buenos Aires, entre ellas Esquina Homero Manzi, El Viejo Almacén, Café de los Angelitos, Tango Porteño y Palacio Tango, entre otras.</p>
+      <p>A nivel internacional ha participado en giras y espectáculos en Europa, Asia y América, integrando compañías como Tango Pasión y Tango Origin, con presentaciones en salas como el Folies Bergère de París, el Teatro Bobino y escenarios de más de 20 países.</p>
+      <p>Como solista ha editado los discos Otro Cantar y Urbana, consolidando una identidad propia dentro del tango contemporáneo. Actualmente integra el dúo Tagini-Merlino junto a Gabriel Merlino y participa en el proyecto Pasos de Cambio como intérprete vocal.</p>
+      <div class="staff-links">
+        <a href="https://instagram.com/vaninatagini" target="_blank" rel="noopener">@vaninatagini</a>
+      </div>
+    </div>
+
+    <div class="staff-card">
+      <div class="staff-role">Arte Digital, Diseño Multimedia y Desarrollo Tecnológico</div>
+      <div class="staff-name">Julián Daniel Puppo</div>
+      <p>Julián Daniel Puppo es artista multimedial, programador creativo, docente e investigador especializado en visuales generativas, sistemas interactivos, inteligencia artificial y tecnologías aplicadas a la producción artística contemporánea.</p>
+      <p>Es estudiante de la Licenciatura en Artes Multimediales de la Universidad Nacional de las Artes (UNA) y Técnico en Computación egresado de la Escuela Técnica Otto Krause. Dirige el proyecto JPupper y la productora Jeyder Multimedia, desde donde desarrolla sistemas de arte digital, programación gráfica y experiencias interactivas en tiempo real.</p>
+      <p>Su práctica integra programación, visión por computadora, sensores de movimiento y software creativo aplicado a instalaciones, videojuegos y entornos escénicos inmersivos, explorando nuevas formas de relación entre cuerpo, imagen y tecnología. Ha desarrollado experiencias interactivas para instituciones culturales y empresas como Tecnópolis, Red Bull y Gobierno de la Ciudad de Buenos Aires, y es creador del software Guipper, utilizado para la generación de visuales en tiempo real. En Pasos de Cambio se incorpora como responsable del desarrollo tecnológico, investigación en sistemas interactivos y diseño de visuales generativas aplicadas a la escena.</p>
+      <div class="staff-links">
+        <a href="https://instagram.com/julianpuppo" target="_blank" rel="noopener">@julianpuppo</a>
+        <a href="https://instagram.com/artedigitaldata" target="_blank" rel="noopener">@artedigitaldata</a>
+      </div>
+    </div>
+
+    <div class="staff-card">
+      <div class="staff-role">Dirección Audiovisual y Edición</div>
+      <div class="staff-name">Darío Lobo</div>
+      <p>Darío Lobo es realizador audiovisual, editor de video y VFX artist, con más de 15 años de experiencia en producción de contenidos audiovisuales y dirección de piezas creativas.</p>
+      <p>Es técnico en producción audiovisual egresado de la Universidad Nacional de Córdoba y ha desarrollado su carrera como editor, creador de contenido y director de piezas para proyectos culturales, comerciales y redes sociales, integrando narrativa visual, montaje y diseño gráfico.</p>
+      <p>Director del documental "Tango: Del arrabal al escenario" (2021) y "La tradicional milonguera" (2025). Fue realizador audiovisual del proyecto TANGOTECH, donde desarrolló la construcción del universo visual y la postproducción de las piezas, consolidando una línea de trabajo en la intersección entre tango, tecnología y lenguaje audiovisual contemporáneo. En Pasos de Cambio se desempeña como responsable de la dirección audiovisual y edición, aportando a la construcción del universo visual y la integración entre imagen, escena y narrativa.</p>
+      <div class="staff-links">
+        <a href="https://www.behance.net/darioloboeditor" target="_blank" rel="noopener">Behance</a>
+        <a href="https://instagram.com/muadhdib" target="_blank" rel="noopener">@muadhdib</a>
+      </div>
+    </div>
+
+    <div class="staff-card">
+      <div class="staff-role">Dirección de Fotografía y Registro Audiovisual</div>
+      <div class="staff-name">Miguel Santillán</div>
+      <p>Miguel Santillán es fotógrafo, camarógrafo y editor especializado en danza y espectáculos teatrales. Ex alumno de la Escuela Motivarte y creador del proyecto "Mujeres que Bailan", se formó también en la Escuela Doméstica y en la Escuela RGB de Rubén Guo.</p>
+      <p>Ha trabajado con bailarines y compañías de todo el país, incluyendo el Ballet Folklórico Nacional, la Compañía de Leonardo Cuello y diversas agrupaciones municipales y regionales. En 2020 participa junto a Leonardo Barri en el video Inspiración, primera producción de URBANTANGO, ganadora de la convocatoria Puentes Culturales 2022 del Ministerio de Cultura de la Ciudad de Buenos Aires.</p>
+      <div class="staff-links">
+        <a href="https://instagram.com/miguelsantillanph" target="_blank" rel="noopener">@miguelsantillanph</a>
+      </div>
+    </div>
+
+    <div class="staff-card">
+      <div class="staff-role">Maquillaje y Caracterización</div>
+      <div class="staff-name">Miriam Marcos</div>
+      <p>Miriam es maquilladora profesional formada con referentes como Juan Gasparini, Gervasio Larrivey, María Belén Díaz, Jacqueline Ambros y Daniel Di Franco, entre otros. Especializada en danza y tango, ha trabajado con figuras como María Nieves, Milena Plebs y Alicia Monti, y participa en producciones fotográficas y audiovisuales del género.</p>
+      <p>Ha realizado el diseño de maquillaje en obras como <em>Astor</em> (dir. Leonardo Cuello), integra el equipo de <em>Cabaret Vermut</em> de la Orquesta Romántica Milonguera en el Salón Marabú, e integró el proyecto URBANTANGO — serie audiovisual de investigación en tango danza en espacios urbanos de Buenos Aires.</p>
+      <div class="staff-links">
+        <a href="https://instagram.com/miriam.marcos.makeup" target="_blank" rel="noopener">@miriam.marcos.makeup</a>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <div class="separator"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
